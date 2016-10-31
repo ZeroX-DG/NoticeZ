@@ -9,7 +9,7 @@ A cool way to make people notice !
   `<link rel="stylesheet" href="NoticeZ.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css"> <!--This link is optional-->
 	<link href="https://fonts.googleapis.com/css?family=Coiny|Raleway|Montserrat" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">`
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">`<br>
   JS:
   `var options = {
 		title : "Oops !",
