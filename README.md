@@ -12,11 +12,11 @@ A cool way to make people notice !
    <link href="https://fonts.googleapis.com/css?family=Coiny|Raleway|Montserrat" rel="stylesheet">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">`<br>
   JS:<br>
-  `var options = {
+```var options = {
 	title : "Oops !",
 	body  : "Something wrong",
 	state : "warning",
 	position: "bottomLeft",
 	font  : "Raleway"
 }
-noticeZ(options);`
+noticeZ(options);```
