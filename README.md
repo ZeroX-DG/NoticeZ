@@ -13,10 +13,10 @@ A cool way to make people notice !
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">`<br>
   JS:<br>
   `var options = {
-		title : "Oops !",
-		body  : "Something wrong",
-		state : "warning",
-		position: "bottomLeft",
-		font  : "Raleway"
-	}
-	noticeZ(options);`
+	title : "Oops !",
+	body  : "Something wrong",
+	state : "warning",
+	position: "bottomLeft",
+	font  : "Raleway"
+}
+noticeZ(options);`
