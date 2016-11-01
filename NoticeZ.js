@@ -45,8 +45,8 @@ function noticeZ(a) {
         j = createContent(b, c, i, f, g);
     if (j = htmlToElements(j), 0 == document.getElementsByClassName(d).length) {
         var k = document.createElement("div");
-        k.className = "nContent " + d, k.appendChild(j[0]), document.body.appendChild(k)
-    } else document.getElementsByClassName(d)[0].appendChild(j[0]);
+        k.className = "nContent " + d, k.appendChild(j), document.body.appendChild(k)
+    } else document.getElementsByClassName(d)[0].appendChild(j);
     setTimeout(function() {
         animateOut(document.getElementById(g), h), setTimeout(function() {
             document.getElementsByClassName(d)[0].removeChild(document.getElementById(g))
