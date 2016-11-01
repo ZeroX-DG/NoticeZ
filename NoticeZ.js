@@ -5,8 +5,9 @@ function animateOut(a, b) {
 }
 
 function htmlToElements(a) {
-    var b = document.createElement("template");
-    return b.innerHTML = a, b.content.childNodes
+    var temp = document.createElement('div');
+    temp.innerHTML = a;
+    return temp.firstChild;
 }
 
 function createContent(a, b, c, d, e) {
