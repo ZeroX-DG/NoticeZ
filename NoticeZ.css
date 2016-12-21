@@ -109,6 +109,7 @@
 	        flex-direction: column;
 	-webkit-transition: all 1s;
 	transition: all 1s;
+	z-index: 10000;
 }
 .noticeBox{
 	display: -webkit-box;
