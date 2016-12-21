@@ -30,7 +30,7 @@ function createContent(a, b, c, d, e) {
             default: "0%"
         },
         i = "";
-    return i += "<div class='noticeBox' id='" + e + "' style='" + g[d] + ";font-family: " + c + "'>", i += "   <div class='left' style='width: " + h[d] + "'>", i += f[d], i += "   </div>", i += "   <div class='right'>", i += "       <span class='Ztitle'>", i += a, i += "       </span><br>", i += "       <span class='Zbody'>", i += b, i += "       </span>", i += "   </div>", i += "</div>"
+    return i += "<div class='noticeBox' id='" + e + "' style='" + g[d] + ";font-family: " + c + "';z-index:1000>", i += "   <div class='left' style='width: " + h[d] + "'>", i += f[d], i += "   </div>", i += "   <div class='right'>", i += "       <span class='Ztitle'>", i += a, i += "       </span><br>", i += "       <span class='Zbody'>", i += b, i += "       </span>", i += "   </div>", i += "</div>"
 }
 
 function noticeZ(a) {
