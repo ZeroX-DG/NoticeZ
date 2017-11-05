@@ -1,23 +1,14 @@
 # NoticeZ
-A cool way to make people notice !
+A small, simple library for creating push notifications
 
 ## Installation:
-Add a link to NoticeZ.js and NoticeZ.css
-```html
-<script src="NoticeZ.js" type="text/javascript"></script>
-<link rel="stylesheet" href="NoticeZ.css" />
+You can install it via npm
 ```
-<br>
-Add a link to fontawesome (https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css)
-
-```html
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+npm install noticez
 ```
-<br>
-Use it ! :3 <br>
 
 ## How to use ?
-this page will show you how to use this library !
+Checkout the documment at:
 https://zerox-dg.github.io/NoticeZ/
 
 ## Contact
