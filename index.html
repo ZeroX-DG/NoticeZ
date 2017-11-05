@@ -28,6 +28,58 @@
   <div class="main">
     <div class="container">
       <div class="example">
+        <span class="title">Installation</span>
+        <p class="content">
+          You can download noticez to your project using npm by exectute this command
+        </p>
+
+        <div class="code">
+          <div class="line">
+            <span>npm install noticez</span>
+          </div>
+        </div>
+        <p class="content">
+          Then to import to your project and use it, run this command
+        </p>  
+        <div class="code">
+          <div class="line">
+            <span class="keyword">let</span>
+            <span> NoticeZ</span>
+            <span>=</span>
+            <span class="functionCall"> require</span>
+            <span>(</span>
+            <span class="string">'noticez'</span>
+            <span>);</span>
+          </div>
+          <div class="line">
+            <span class="functionCall">NoticeZ</span>
+            <span>(</span>
+            <span class="string">'hello'</span>
+            <span>,</span>
+            <span class="string">'testing'</span>
+            <span>);</span>
+          </div>
+        </div>
+        <p class="content">
+          Or you can download the code from
+          <a href="https://github.com/ZeroX-DG/NoticeZ/archive/master.zip">
+            here.
+          </a>
+          Then add a script tag that point to the library
+        </p>
+        <div class="code">
+          <div class="line">
+            <span>&lt;</span>
+            <span class="keyword">script</span>
+            <span>src=</span>
+            <span class="string">'path/to/library/NoticeZ.js'</span>
+            <span>/&gt;</span>
+          </div>
+        </div>
+        <br>
+        
+      </div>
+      <div class="example">
         <span class="title">Basic notification</span>
         <br>
         <p class="content">
@@ -54,7 +106,7 @@
         </div>
         <br>
         <button class="try-btn" 
-                onclick="NoticeZ('Hello', 'Random number: ' + Math.random())">
+                onclick="NoticeZ('Success', 'A task has been successfully executed !')">
                 Try it !
         </button>
       </div>
