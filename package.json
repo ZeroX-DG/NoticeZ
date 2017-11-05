@@ -1,6 +1,6 @@
 {
   "name": "noticez",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A small, simple library for creating push notifications",
   "main": "NoticeZ.js",
   "devDependencies": {},

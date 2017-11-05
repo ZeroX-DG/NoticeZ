@@ -47,12 +47,13 @@
         contentElement.style[styleName] = styleValue;
       }
       // add image if specified
+      let imageContainer;
       if(options.image){
         let image = document.createElement("img");
         image.src = options.image;
         image.style.width = "100%";
         image.style.height = "auto";
-        let imageContainer = document.createElement("div");
+        imageContainer = document.createElement("div");
         imageContainer.style.width = "30%";
         imageContainer.style.height= "100%";
         imageContainer.style.display = "inline-block";
@@ -63,10 +64,12 @@
       }
       // add title and content to notification
       let mainContainer = document.createElement("div");
-      mainContainer.style.width = "65%";
-      mainContainer.style.height= "100%";
-      mainContainer.style.display = "inline-block";
-      mainContainer.style.cssFloat = "left";
+      if(imageContainer){
+        mainContainer.style.width = "65%";
+        mainContainer.style.height= "100%";
+        mainContainer.style.display = "inline-block";
+        mainContainer.style.cssFloat = "left";
+      }
       mainContainer.appendChild(titleElement);
       mainContainer.appendChild(contentElement);
       noti.appendChild(mainContainer);
@@ -142,7 +145,8 @@
       title: {
         fontSize: "1.5rem",
         marginBottom: "20px",
-        fontFamily: "Tahoma"
+        fontFamily: "Tahoma",
+        marginTop: "0px"
       },
       content: {
         fontSize: "1.1rem",
