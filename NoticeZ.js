@@ -1,5 +1,5 @@
 (function(window){
-  NoticeZ = () => {
+  NoticeZ = function() {
     let showNoti = (notification) => {
       document.body.appendChild(notification);
     }
