@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>NoticeZ | A small, simple library for creating push notifications</title>
+  <link rel="stylesheet" href="/app.css">
+  <script src="/vendor.js"></script>
+  <script src="/app.js"></script>
+  <script src="/NoticeZ.js"></script>
+  <script>require('initialize');</script>
+</head>
+<body>
+  <div class="header">
+    <div class="container">
+      <h3 class="title text-center">NoticeZ</h3>
+      <p class="sub-title text-center">
+        A small, simple library for creating push notifications
+      </p>
+      <div class="code small-header-code text-center">
+        npm install noticez
+      </div>
+    </div>
+    <div class="notification">
+      <p class="title">Push notification</p>
+      <p class="content">Comes in all shapes and sizes</p>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="example">
+        <span class="title">Basic notification</span>
+        <br>
+        <p class="content">
+          To create a basic notification, you will only need to specify the title
+          and content of the notification then let the library do the rest.
+          <br>
+          <br>
+          <b style="font-weight: bold">Notes: </b>
+          <br>
+          The default background for the notification is <code>#3498db</code><br>
+          The default time until disappear is 3 secs <br>
+          The default position is bottom right
+        </p>
+        <br>
+        <div class="code">
+          <div class="line">
+            <span class="functionCall">NoticeZ</span>
+            <span>(</span>
+            <span class="string">"Success"</span>
+            <span>,</span>
+            <span class="string">"A task has been successfully executed !"</span>
+            <span>)</span>
+          </div>
+        </div>
+        <br>
+        <button class="try-btn" 
+                onclick="NoticeZ('Hello', 'Random number: ' + Math.random())">
+                Try it !
+        </button>
+      </div>
+      <br>
+      <br>
+      <div class="example">
+        <span class="title">Custom time and position notification</span>
+        <p class="content">
+          To customize "time until disappear" of a notification, 
+          you can specify the <code>time</code> property in the options.
+        </p>
+        <br>
+        <div class="code">
+          <div class="line">
+            <span class="keyword">let</span>
+            <span> options = {</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;time: 3000 //3secs </span>
+          </div>
+          <div class="line">
+            <span>}</span>
+          </div>
+          <div class="line">
+            <span class="functionCall">NoticeZ</span>
+            <span>(</span>
+            <span class="string">'Hello'</span>
+            <span>,</span>
+            <span class="string">'Good bye in 3 secs'</span>
+            <span>,</span>
+            <span>options</span>
+            <span>)</span>
+          </div>
+        </div>
+        <br>
+        <button class="try-btn" 
+                onclick="NoticeZ('Hello', 'Good bye in 3 secs', {time: 3000})">
+                Try it !
+        </button>
+        <br>
+        <p class="content">
+          To change the position of the notification, the <code>position</code>
+          property has been provided.
+          <br>
+          <br>
+          There are 4 different types of position:
+          <br>
+          <br>
+          <code>top left</code><br><br>
+          <code>top right</code><br><br>
+          <code>bottom left</code><br><br>
+          <code>bottom right</code><br><br>
+        </p>
+        <br>
+        <div class="code">
+          <div class="line">
+            <span class="keyword">let</span>
+            <span> options = {</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;position: </span>
+            <span class="string">'top right'</span>
+            <span>,</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;time: 5000 //3secs </span>
+          </div>
+          <div class="line">
+            <span>}</span>
+          </div>
+          <div class="line">
+            <span class="functionCall">NoticeZ</span>
+            <span>(</span>
+            <span class="string">'Hello'</span>
+            <span>,</span>
+            <span class="string">'Good bye in 5 secs'</span>
+            <span>,</span>
+            <span>options</span>
+            <span>)</span>
+          </div>
+        </div>
+        <br>
+        <button class="try-btn" 
+                onclick="NoticeZ('Hello', 'Good bye in 5 secs', {time: 5000, position: 'top right'})">
+                Try it !
+        </button>
+      </div>
+      <br>
+      <br>
+      <div class="example">
+        <span class="title">Custom styles</span>
+        <p class="content">
+          To change the style of the notification you can add these properties
+          to the <code>options</code>
+          <br>
+          <br>
+          <code>background</code>: 
+          <span>(type: string) The hex or name or rgba of the background color</span>
+          <br>
+          <br>
+          <code>textColor</code>: 
+          <span>(type: string) The hex or name or rgba of the text color</span>
+          <br>
+          <br>
+          <code>roundness</code>: 
+          <span>(type: int) The roundness of the corner in pixel (px)</span>
+          <br>
+          <br>
+          <code>font</code>: 
+          <span>(type: string) The font for both title and content</span>
+          <br>
+          <br>
+          <code>titleFont</code>: 
+          <span>(type: string) The font for just the title</span>
+          <br>
+          <br>
+          <code>contentFont</code>: 
+          <span>(type: string) The font for just the content</span>
+          <br>
+          <br>
+          <code>width</code>: 
+          <span>(type: int) The width of the notification in pixel (px)</span>
+          <br>
+          <br>
+          <code>height</code>: 
+          <span>(type: int) The height of the notification in pixel (px)</span>
+        </p>
+        <br>
+        <div class="code">
+          <div class="line">
+            <span class="keyword">let</span>
+            <span> options = {</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;background: </span>
+            <span class="string">'#34495e'</span>
+            <span>,</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;textColor: </span>
+            <span class="string">'#f1c40f'</span>
+            <span>,</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;roundness: 15</span>
+            <span>,</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;font: </span>
+            <span class="string">'Raleway'</span>
+            <span>,</span>
+          </div>
+          <div class="line">
+            <span>}</span>
+          </div>
+          <div class="line">
+            <span class="functionCall">NoticeZ</span>
+            <span>(</span>
+            <span class="string">'Hello'</span>
+            <span>,</span>
+            <span class="string">'This is a custom notification'</span>
+            <span>,</span>
+            <span>options</span>
+            <span>)</span>
+          </div>
+        </div>
+        <br>
+        <button class="try-btn" 
+                onclick="NoticeZ('Hello', 'This is a custom notification', {
+                  background: '#34495e' ,
+                  textColor: '#f1c40f' ,
+                  roundness: 15 ,
+                  font: 'Raleway' ,
+                })">
+                Try it !
+        </button>
+      </div>
+      <div class="example">
+        <span class="title">Events</span>
+        <p class="content">
+          Currently there're 4 basic events:
+          <br>
+          <br>
+          <code>OnMouseOver</code><br><br>
+          <code>OnMouseLeave</code><br><br>
+          <code>OnDisappear</code><br><br>
+          <code>OnClick</code><br><br>
+          You can add those event to the 4th parameter
+        </p>
+        <br>
+        <div class="code">
+          <div class="line">
+            <span class="keyword">let</span>
+            <span> events = {</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;// es6 arrow function</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;OnMouseOver: () => {</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span class="functionCall">alert</span> 
+            <span>(</span>
+            <span class="string">'mouse on'</span>
+            <span>);</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;},</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;OnMouseLeave: () => {</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span class="functionCall">alert</span> 
+            <span>(</span>
+            <span class="string">'mouse off'</span>
+            <span>);</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;},</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;OnDisappear: () => {</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span class="functionCall">alert</span> 
+            <span>(</span>
+            <span class="string">'good bye'</span>
+            <span>);</span>
+          </div>
+          <div class="line">
+            <span>&nbsp;&nbsp;}</span>
+          </div>
+          <div class="line">
+            <span>}</span>
+          </div>
+          <div class="line">
+            <span class="functionCall">NoticeZ</span>
+            <span>(</span>
+            <span class="string">'Hello'</span>
+            <span>,</span>
+            <span class="string">"I'm a notification try hover me"</span>
+            <span>,</span>
+            <span>{}</span>
+            <span>,</span>
+            <span>events</span>
+            <span>)</span>
+          </div>
+        </div>
+        <br>
+        <button class="try-btn" 
+                onclick="NoticeZ('Hello' , 'I\'m a notification try hover me', {}, {
+                  // es6 arrow function
+                  OnMouseOver: () => {
+                    alert('mouse on');
+                  },
+                  OnMouseLeave: () => {
+                    alert('mouse off');
+                  },
+                  OnDisappear: () => {
+                    alert('good bye');
+                  }
+                })">
+                Try it !
+        </button>
+      </div>
+      <div class="example">
+        <span class="title">Other options</span>
+        <p class="content">
+          <code>canClose</code> : This property will create a close
+          button for the notification
+        </p>
+        <br>
+        <div class="code">
+          <div class="line">
+            <span class="functionCall">NoticeZ</span>
+            <span>(</span>
+            <span class="string">'Hey'</span>
+            <span>,</span>
+            <span class="string">'I have a close button'</span>
+            <span>,</span>
+            <span>{ canClose: true }</span>
+            <span>)</span>
+          </div>
+        </div>
+        <br>
+        <button class="try-btn" 
+                onclick="NoticeZ ( 'Hey' , 'I have a close button' , { 
+                  canClose: true 
+                })">
+                Try it !
+        </button>
+        <br>
+        <p class="content">
+          <code>image</code> : If you want to display an image on the notification
+          you can use this property. This property is a string that contains link
+          to your desired image.
+        </p>
+        <br>
+        <div class="code">
+          <div class="line">
+            <span class="functionCall">NoticeZ</span>
+            <span>(</span>
+            <span class="string">'Hey'</span> 
+            <span>,</span> 
+            <span class="string">"There's an image on me"</span>
+            <span>,</span>
+            <span>{ image: </span>
+            <span class="string">
+              "https://avatars1.githubusercontent.com/u/12984316?s=460&v=4"
+            </span>
+            <span>}</span>
+            <span>)</span>
+          </div>
+        </div>
+        <br>
+        <button class="try-btn"
+                onclick="NoticeZ ( 
+                  'Hey' , 
+                  'There\'s an image on me' , 
+                  { 
+                    image: 'https://avatars1.githubusercontent.com/u/12984316?s=460&v=4' 
+                  }
+                )">
+                Try it !
+        </button>
+      </div>
+    </div>
+    <br>
+    <div class="footer">
+      <p class="title">
+        Made with love by 
+        <a href="https://github.com/ZeroX-DG/">Hung Nguyen</a>
+      </p>
+    </div>
+  </div>
+</body>
