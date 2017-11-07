@@ -1,1 +1,198 @@
-!function(){"use strict";var e="undefined"==typeof global?self:global;if("function"!=typeof e.require){var n={},r={},t={},i={}.hasOwnProperty,o=/^\.\.?(\/|$)/,u=function(e,n){for(var r,t=[],i=(o.test(n)?e+"/"+n:n).split("/"),u=0,a=i.length;u<a;u++)r=i[u],".."===r?t.pop():"."!==r&&""!==r&&t.push(r);return t.join("/")},a=function(e){return e.split("/").slice(0,-1).join("/")},c=function(n){return function(r){var t=u(a(n),r);return e.require(t,n)}},s=function(e,n){var t=v&&v.createHot(e),i={id:e,exports:{},hot:t};return r[e]=i,n(i.exports,c(e),i),i.exports},l=function(e){return t[e]?l(t[e]):e},f=function(e,n){return l(u(a(e),n))},d=function(e,t){null==t&&(t="/");var o=l(e);if(i.call(r,o))return r[o].exports;if(i.call(n,o))return s(o,n[o]);throw new Error("Cannot find module '"+e+"' from '"+t+"'")};d.alias=function(e,n){t[n]=e};var p=/\.[^.\/]+$/,h=/\/index(\.[^\/]+)?$/,g=function(e){if(p.test(e)){var n=e.replace(p,"");i.call(t,n)&&t[n].replace(p,"")!==n+"/index"||(t[n]=e)}if(h.test(e)){var r=e.replace(h,"");i.call(t,r)||(t[r]=e)}};d.register=d.define=function(e,t){if(e&&"object"==typeof e)for(var o in e)i.call(e,o)&&d.register(o,e[o]);else n[e]=t,delete r[e],g(e)},d.list=function(){var e=[];for(var r in n)i.call(n,r)&&e.push(r);return e};var v=e._hmr&&new e._hmr(f,d,n,r);d._cache=r,d.hmr=v&&v.wrap,d.brunch=!0,e.require=d}}(),function(){"undefined"==typeof window?this:window;require.register("initialize.js",function(e,n,r){"use strict";function t(e){var n=i(".header .notification .content"),r=i(".header .notification"),o=["comes in all sizes","can also changes color","corners are also adjustable"],u=[function(e){e.css({width:"500px",height:"200px",backgroundColor:"#3498db",borderRadius:"8px"})},function(e){e.css({backgroundColor:"#34495e",width:"350px",height:"150px"})},function(e){e.css({backgroundColor:"#34495e",borderRadius:"40px"})}];n.text(o[e]),u[e](r),setTimeout(function(){t((e+1)%o.length)},3e3)}var i=n("jquery");document.addEventListener("DOMContentLoaded",function(){t(0)})}),require.register("___globals___",function(e,n,r){})}(),require("___globals___");
+(function() {
+  'use strict';
+
+  var globals = typeof global === 'undefined' ? self : global;
+  if (typeof globals.require === 'function') return;
+
+  var modules = {};
+  var cache = {};
+  var aliases = {};
+  var has = {}.hasOwnProperty;
+
+  var expRe = /^\.\.?(\/|$)/;
+  var expand = function(root, name) {
+    var results = [], part;
+    var parts = (expRe.test(name) ? root + '/' + name : name).split('/');
+    for (var i = 0, length = parts.length; i < length; i++) {
+      part = parts[i];
+      if (part === '..') {
+        results.pop();
+      } else if (part !== '.' && part !== '') {
+        results.push(part);
+      }
+    }
+    return results.join('/');
+  };
+
+  var dirname = function(path) {
+    return path.split('/').slice(0, -1).join('/');
+  };
+
+  var localRequire = function(path) {
+    return function expanded(name) {
+      var absolute = expand(dirname(path), name);
+      return globals.require(absolute, path);
+    };
+  };
+
+  var initModule = function(name, definition) {
+    var hot = hmr && hmr.createHot(name);
+    var module = {id: name, exports: {}, hot: hot};
+    cache[name] = module;
+    definition(module.exports, localRequire(name), module);
+    return module.exports;
+  };
+
+  var expandAlias = function(name) {
+    return aliases[name] ? expandAlias(aliases[name]) : name;
+  };
+
+  var _resolve = function(name, dep) {
+    return expandAlias(expand(dirname(name), dep));
+  };
+
+  var require = function(name, loaderPath) {
+    if (loaderPath == null) loaderPath = '/';
+    var path = expandAlias(name);
+
+    if (has.call(cache, path)) return cache[path].exports;
+    if (has.call(modules, path)) return initModule(path, modules[path]);
+
+    throw new Error("Cannot find module '" + name + "' from '" + loaderPath + "'");
+  };
+
+  require.alias = function(from, to) {
+    aliases[to] = from;
+  };
+
+  var extRe = /\.[^.\/]+$/;
+  var indexRe = /\/index(\.[^\/]+)?$/;
+  var addExtensions = function(bundle) {
+    if (extRe.test(bundle)) {
+      var alias = bundle.replace(extRe, '');
+      if (!has.call(aliases, alias) || aliases[alias].replace(extRe, '') === alias + '/index') {
+        aliases[alias] = bundle;
+      }
+    }
+
+    if (indexRe.test(bundle)) {
+      var iAlias = bundle.replace(indexRe, '');
+      if (!has.call(aliases, iAlias)) {
+        aliases[iAlias] = bundle;
+      }
+    }
+  };
+
+  require.register = require.define = function(bundle, fn) {
+    if (bundle && typeof bundle === 'object') {
+      for (var key in bundle) {
+        if (has.call(bundle, key)) {
+          require.register(key, bundle[key]);
+        }
+      }
+    } else {
+      modules[bundle] = fn;
+      delete cache[bundle];
+      addExtensions(bundle);
+    }
+  };
+
+  require.list = function() {
+    var list = [];
+    for (var item in modules) {
+      if (has.call(modules, item)) {
+        list.push(item);
+      }
+    }
+    return list;
+  };
+
+  var hmr = globals._hmr && new globals._hmr(_resolve, require, modules, cache);
+  require._cache = cache;
+  require.hmr = hmr && hmr.wrap;
+  require.brunch = true;
+  globals.require = require;
+})();
+
+(function() {
+var global = typeof window === 'undefined' ? this : window;
+var __makeRelativeRequire = function(require, mappings, pref) {
+  var none = {};
+  var tryReq = function(name, pref) {
+    var val;
+    try {
+      val = require(pref + '/node_modules/' + name);
+      return val;
+    } catch (e) {
+      if (e.toString().indexOf('Cannot find module') === -1) {
+        throw e;
+      }
+
+      if (pref.indexOf('node_modules') !== -1) {
+        var s = pref.split('/');
+        var i = s.lastIndexOf('node_modules');
+        var newPref = s.slice(0, i).join('/');
+        return tryReq(name, newPref);
+      }
+    }
+    return none;
+  };
+  return function(name) {
+    if (name in mappings) name = mappings[name];
+    if (!name) return;
+    if (name[0] !== '.' && pref) {
+      var val = tryReq(name, pref);
+      if (val !== none) return val;
+    }
+    return require(name);
+  }
+};
+require.register("initialize.js", function(exports, require, module) {
+'use strict';
+
+var $ = require('jquery');
+document.addEventListener('DOMContentLoaded', function () {
+  // do your setup here
+  changeNoti(0);
+});
+
+function changeNoti(index) {
+  var content = $(".header .notification .content");
+  var notification = $(".header .notification");
+  var message = ["comes in all sizes", "can also changes color", "corners are also adjustable"];
+  var effects = [function (notification) {
+    notification.css({
+      width: "500px",
+      height: "200px",
+      backgroundColor: "#3498db",
+      borderRadius: "8px"
+    });
+  }, function (notification) {
+    notification.css({
+      backgroundColor: "#34495e",
+      width: "350px",
+      height: "150px"
+    });
+  }, function (notification) {
+    notification.css({
+      backgroundColor: "#34495e",
+      borderRadius: "40px"
+    });
+  }];
+  // change content
+  content.text(message[index]);
+  // apply effects
+  effects[index](notification);
+  // repeat after 3sec
+  setTimeout(function () {
+    changeNoti((index + 1) % message.length);
+  }, 3000);
+}
+});
+
+;require.register("___globals___", function(exports, require, module) {
+  
+});})();require('___globals___');
+
+
+//# sourceMappingURL=app.js.map
