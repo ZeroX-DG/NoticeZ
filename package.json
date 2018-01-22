@@ -2,7 +2,7 @@
   "name": "noticez",
   "version": "1.0.4",
   "description": "A small, simple library for creating push notifications",
-  "main": "NoticeZ.js",
+  "main": "dist/NoticeZ.js",
   "scripts": {
     "test": "ava --verbose --color || true",
     "build": "gulp scripts"
