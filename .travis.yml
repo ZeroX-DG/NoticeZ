@@ -1,0 +1,17 @@
+language: node_js
+os:
+    - linux
+    - windows
+node_js:
+    - "6"
+    - "stable"
+sudo: false
+before_script:
+  - npm install -g yarn gulp ava
+  - yarn install
+script:
+    - gulp scripts
+cache:
+  yarn: true
+  directories:
+    - node_modules

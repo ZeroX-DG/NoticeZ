@@ -1,1 +1,0 @@
-npm install --save-dev gulp gulp-plumber gulp-rename gulp-concat gulp-babel gulp-uglify
