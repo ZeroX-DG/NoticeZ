@@ -3,18 +3,16 @@
   "version": "1.0.2",
   "description": "A small, simple library for creating push notifications",
   "main": "NoticeZ.js",
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava --verbose --color || true",
+    "build": "gulp scripts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ZeroX-DG/NoticeZ.git"
-  },
-  "author": "Hung Nguyen <viethungax@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ZeroX-DG/NoticeZ/issues"
-  },
-  "homepage": "https://github.com/ZeroX-DG/NoticeZ#readme"
+  "devDependencies": {
+    "ava": "^0.24.0",
+    "browser-env": "^3.2.4",
+    "gulp": "^3.9.1",
+    "gulp-minify": "^2.1.0",
+    "gulp-plumber": "^1.2.0",
+    "jquery": "^3.3.1"
+  }
 }
