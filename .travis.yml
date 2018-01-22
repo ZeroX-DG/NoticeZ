@@ -11,7 +11,7 @@ before_script:
   - yarn install
 script:
     - gulp scripts
-    - ava --verbose --color || true
+    - ava --verbose --color
 cache:
   yarn: true
   directories:

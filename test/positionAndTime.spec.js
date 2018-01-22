@@ -57,10 +57,11 @@ test.before(t => {
   console.log(chalk.yellow("Time tests\n"));
 });
 
-test.cb('Disappear in 1 millisecond', t => {
+
+test.cb('Disappeared in 2 millisecond', t => {
 	let noti = NoticeZ('hello', 'hi', {
     position: 'top left',
-    time: 1
+    time: 2
   });
   
   setTimeout(() => {
@@ -68,5 +69,5 @@ test.cb('Disappear in 1 millisecond', t => {
     let is_noti_in_browser = noti_in_browser !== null;
     t.false(is_noti_in_browser);
     t.end();
-  }, 1);
+  }, 3);
 });
