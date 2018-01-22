@@ -157,7 +157,7 @@
         background: "#3498db",
         padding: "20px",
         color: "white",
-        borderRadius: "8px",
+        borderRadius: "0px",
         boxShadow: "0px 10px 20px -2px rgba(0, 0, 0, 0.24)",
         transition: "all 0.4s",
         position: "fixed",
