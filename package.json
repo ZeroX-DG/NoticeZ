@@ -1,6 +1,6 @@
 {
   "name": "noticez",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A small, simple library for creating push notifications",
   "main": "dist/NoticeZ.js",
   "scripts": {
