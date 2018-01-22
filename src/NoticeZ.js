@@ -4,14 +4,14 @@
      * Show the notification by appending it to body
      * @param {Node} notification 
      */
-    let showNoti = (notification) => {
+    let showNoti = function (notification){
       document.body.appendChild(notification);
     }
     
     /**
      * re-arrange all the notifications when a notification is removed
      */
-    let rearrageNotis = () => {
+    let rearrageNotis = function () {
       // get all the notifications that is same position to the removed noti
       let sameTypeNoticeZClass = "NoticeZ " + options.position.split(" ")[0];
       let notis = document.getElementsByClassName(sameTypeNoticeZClass);
@@ -37,7 +37,7 @@
      * @param {Object} styles 
      * @param {Object} options 
      */
-    let makeNoti = (title, content, styles, options) => {
+    let makeNoti = function (title, content, styles, options) {
       let noti = document.createElement("div");
       noti.className = "NoticeZ " + options.position;
       for(let key in styles.notification){
@@ -183,7 +183,7 @@
       image: ''
     };
     let events = {};
-    let setOptions = (tempOptions) => {
+    let setOptions = function (tempOptions) {
       options.position = tempOptions.position || options.position;
       options.time = tempOptions.time || options.time;
       options.closeAble = tempOptions.canClose || options.closeAble;

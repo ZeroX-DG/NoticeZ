@@ -48,6 +48,10 @@ test('Display at top left', t => {
 	t.is(noti, noti_in_browser);
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c6777b3b7d363eda654da7dd67d2079e76a88294
 test.cb('Disappeared in 2 millisecond', t => {
 	let noti = NoticeZ('hello', 'hi', {
     position: 'top left',

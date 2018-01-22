@@ -7,7 +7,7 @@ test.beforeEach(t => {
 });
 
 test("custom background", t => {
-  let noti = NoticeZ('custom background noti', 'hi', {
+  let noti = NoticeZ('custom noti', 'hi', {
     background: '#282828'
   });
   let noti_in_browser = document.querySelector('.NoticeZ.bottom.right');
