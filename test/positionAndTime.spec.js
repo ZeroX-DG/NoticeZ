@@ -1,11 +1,6 @@
 import test from 'ava';
 import NoticeZ from '../dist/NoticeZ.min.js'
 import browserEnv from 'browser-env';
-import chalk from 'chalk';
-
-test.before(t => {
-  console.log(chalk.yellow("Position tests\n"));
-});
 
 test.beforeEach(t => {
   browserEnv(['window', 'document']);
@@ -52,11 +47,6 @@ test('Display at top left', t => {
 
 	t.is(noti, noti_in_browser);
 });
-
-test.before(t => {
-  console.log(chalk.yellow("Time tests\n"));
-});
-
 
 test.cb('Disappeared in 2 millisecond', t => {
 	let noti = NoticeZ('hello', 'hi', {
