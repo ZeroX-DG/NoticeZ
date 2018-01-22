@@ -78,11 +78,8 @@ let options = {
 }
 NoticeZ ( 'Hello' , 'Good bye in 5 secs' , options )
 ```
-<<<<<<< 867a0bd331bed81ecd785ada038a4cfb430135c0
-=======
 ## Contributing
 PRs are welcome ! don't hesitate to submit one !
->>>>>>> Updated readme & added travis.yml
 
 ## Contact
 viethungax@gmail.com
