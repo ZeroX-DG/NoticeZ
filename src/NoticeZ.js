@@ -18,7 +18,7 @@
       // if the removed notification is not the last one in the list
       if(notis.length > 0){
         let position = options.position.split(" ");
-        let notiHeight = parseInt(notis[0].style.height.replace("px", ""));
+        let notiHeight = parseInt(notis[0].clientHeight);
         let padding = options.padding;
         for(let i = 0; i < notis.length; i++){
           // i + 1 because the first one need index 1
@@ -85,6 +85,7 @@
         mainContainer.style.display = "inline-block";
         mainContainer.style.cssFloat = "left";
       }
+      mainContainer.style.wordWrap = "break-word";
       mainContainer.appendChild(titleElement);
       mainContainer.appendChild(contentElement);
       noti.appendChild(mainContainer);
@@ -152,8 +153,7 @@
       notification: {
         background: "#3498db",
         width: "350px",
-        height: "150px",
-        boxSizing: "border-box",
+        minHeight: "150px",
         background: "#3498db",
         padding: "20px",
         color: "white",
@@ -248,6 +248,7 @@
       // then we can show it
       let notification = makeNoti(title, content, styles, options);
       showNoti(notification);
+      rearrageNotis();
       // then hide it after a period of time
       setTimeout(function(){
         if(notification.ondisappear)
