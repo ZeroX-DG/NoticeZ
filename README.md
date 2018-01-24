@@ -27,7 +27,7 @@ NoticeZ('hello', 'this is a notification');
 
 ## How to use ?
 
-Checkout the documment at:
+Checkout the full documment at:
 https://zerox-dg.github.io/NoticeZ/
 
 ### Syntax
@@ -78,6 +78,15 @@ let options = {
 }
 NoticeZ ( 'Hello' , 'Good bye in 5 secs' , options )
 ```
+## Todos
+
+- [x] Allow notifications to appear forever (if time is negative)
+- [x] Allow html in notification
+- [ ] One line notification
+- [ ] Add entrance transition effects
+- [ ] Add out transition effects
+- [ ] Allow pin notification
+
 ## Contributing
 PRs are welcome ! don't hesitate to submit one !
 

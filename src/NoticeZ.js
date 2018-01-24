@@ -7,7 +7,7 @@
     let showNoti = function (notification){
       document.body.appendChild(notification);
     }
-    
+
     /**
      * re-arrange all the notifications when a notification is removed
      */
@@ -47,9 +47,19 @@
       }
       let titleElement = document.createElement("p");
       let contentElement = document.createElement("p");
-      // add text to title and content
-      titleElement.innerText = title;
-      contentElement.innerText = content;
+      // if html mode is enabled then add them as html
+      if (options.html) {
+        titleElement.innerHTML = title;
+        contentElement.innerHTML = content;
+      }
+      else {
+        // otherwise add them as text
+        titleElement.innerText = title;
+        contentElement.innerText = content;
+      }
+      // add content and title directly to the noti for easier testing
+      noti.title = title;
+      noti.content = content;
       // apply style to title and content
       for(let key in styles.title){
         let styleName = key;
@@ -180,7 +190,8 @@
       time: 3000,
       padding: 10,
       closeAble: false,
-      image: ''
+      image: '',
+      html: false
     };
     let events = {};
     let setOptions = function (tempOptions) {
@@ -188,6 +199,7 @@
       options.time = tempOptions.time || options.time;
       options.closeAble = tempOptions.canClose || options.closeAble;
       options.image = tempOptions.image || options.image;
+      options.html = tempOptions.html || options.html;
       // styles
       // background
       styles.notification.background = 
@@ -249,15 +261,17 @@
       let notification = makeNoti(title, content, styles, options);
       showNoti(notification);
       rearrageNotis();
-      // then hide it after a period of time
-      setTimeout(function(){
-        if(notification.ondisappear)
-          notification.ondisappear();
-        notification.remove();
-        // re-arrange notis
-        rearrageNotis();
-      }, options.time);
-      
+      // if the time is a positive
+      if (options.time >= 0) {
+        // then hide it after a period of time
+        setTimeout(function(){
+          if(notification.ondisappear)
+            notification.ondisappear();
+          notification.remove();
+          // re-arrange notis
+          rearrageNotis();
+        }, options.time);
+      }
       return notification;
     }
     else{
