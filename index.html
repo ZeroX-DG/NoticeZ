@@ -117,6 +117,9 @@
         <p class="content">
           To customize "time until disappear" of a notification, 
           you can specify the <code>time</code> property in the options.
+          If you set the time to a negative number, for example: -1, the
+          notification will never disappear. However, it can be closed using
+          the <code>canClose</code> option to create a close button.
         </p>
         <br>
         <div class="code">
@@ -437,6 +440,33 @@
                 )">
                 Try it !
         </button>
+        <br>
+        <p class="content">
+          <code>html</code> : This property will allow both title and content
+          of the notification to include html code.
+        </p>
+        <br>
+        <div class="code">
+          <div class="line">
+            <span class="functionCall">NoticeZ</span>
+            <span>(</span>
+            <span class="string">'&lt;font size="30px"&gt;Hey&lt;/font&gt;'</span>
+            <span>,</span>
+            <span class="string">'Important message'</span>
+            <span>,</span>
+            <span>{ html: true }</span>
+            <span>)</span>
+          </div>
+        </div>
+        <br>
+        <button class="try-btn" 
+                onclick="NoticeZ ( '<font size=\'30px\'>Hey</font>' , 
+                'Important message' , { 
+                  html: true 
+                })">
+                Try it !
+        </button>
+        <br>
       </div>
     </div>
     <br>
