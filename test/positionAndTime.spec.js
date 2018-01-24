@@ -1,5 +1,5 @@
 import test from 'ava';
-import NoticeZ from '../dist/NoticeZ.min.js'
+import NoticeZ from '../src/NoticeZ';
 import browserEnv from 'browser-env';
 
 
@@ -42,24 +42,9 @@ test('Display at top right', t => {
 
 test('Display at top left', t => {
 	let noti = NoticeZ('hello', 'hi', {
-    position: 'top left'
+    position: 'top left',
   });
   let noti_in_browser = document.querySelector('.NoticeZ.top.left');
 
 	t.is(noti, noti_in_browser);
-});
-
-
-test.cb('Disappeared in 2 millisecond', t => {
-	let noti = NoticeZ('hello', 'hi', {
-    position: 'top left',
-    time: 2
-  });
-  
-  setTimeout(() => {
-    let noti_in_browser = document.querySelector('.NoticeZ.top.left');
-    let is_noti_in_browser = noti_in_browser !== null;
-    t.false(is_noti_in_browser);
-    t.end();
-  }, 3);
 });
